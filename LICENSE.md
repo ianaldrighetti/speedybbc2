@@ -1,5 +1,7 @@
 Microsoft Reciprocal License (MS-RL)
-[OSI Approved License] (vhttp://opensource.org/licenses/ms-rl)
+=====
+[OSI Approved License](vhttp://opensource.org/licenses/ms-rl)
+
 This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software.
 
 1. Definitions
