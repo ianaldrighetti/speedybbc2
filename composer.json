@@ -1,0 +1,28 @@
+{
+    "name": "ianaldrighetti/speedybc",
+    "description": "A PHP-based Bulletin Board Code parser aimed at being fast.",
+    "type": "library",
+    "keywords": ["bbc", "bbcode", "parser"],
+    "homepage": "https://github.com/ianaldrighetti/speedybbc",
+    "license": "MS-RL",
+    "authors": [
+        {
+            "name": "Ian Aldrighetti",
+            "email": "ianaldrighetti@outlook.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/ianaldrighetti/speedybbc/issues",
+        "wiki": "https://github.com/ianaldrighetti/speedybbc/wiki"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Speedy\\": "./",
+            "SpeedyTests\\": "./"
+        }
+    }
+}
