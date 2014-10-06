@@ -160,12 +160,13 @@ class SpeedyLexer
     }
 
     /**
-     * @param string $text
-     * @param int $sq_pos
-     * @param string $quote
-     * @return array
+     * @param string $text The text.
+     * @param int $sq_pos The starting position of the quote within $text.
+     * @param string $quote The quote being searched for (i.e. &#039; or &quot;).
+     * @return array An array with the first index being the starting position ($sq_pos) and the second being the ending
+     *               position of the quote (the index of the first character in the quote).
      */
-    private function getQuoteEndingPosition($text, $sq_pos, $quote)
+    public function getQuoteEndingPosition($text, $sq_pos, $quote)
     {
         // The ending quote position... unknown now (so use the opening quote).
         $eq_pos = $sq_pos;
@@ -181,7 +182,7 @@ class SpeedyLexer
                 continue;
             }
 
-            $eq_pos = $cur_pos;
+            $eq_pos = $nq_pos;
             break;
         }
 
