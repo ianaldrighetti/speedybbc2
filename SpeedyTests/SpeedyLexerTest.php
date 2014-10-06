@@ -57,5 +57,39 @@ class SpeedyLexerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($sq_pos, $position[0]);
         $this->assertEquals($eq_pos, $position[1]);
     }
+
+    public function testGetBracketEndingPosition()
+    {
+        $text = 'this is [a] tag';
+        $text_length = strlen($text);
+        $obrk_pos = strpos($text, '[');
+        $cbrk_pos = strrpos($text, ']');
+
+        $position = $this->lexer->getBracketEndingPos($text, $text_length, $obrk_pos, $cbrk_pos);
+
+        $this->assertTrue(is_array($position));
+        $this->assertEquals(2, count($position));
+        $this->assertEquals($cbrk_pos, $position[0]);
+        $this->assertEquals(array(), $position[1]);
+    }
+
+    public function testGetBracketEndingPositionWithQuotes()
+    {
+        $text = 'click... [url=&quot;www.github.com&quot;]here';
+        $text_length = strlen($text);
+        $obrk_pos = strpos($text, '[');
+        $cbrk_pos = strrpos($text, ']');
+
+        $quote = '&quot;';
+        $sq_pos = strpos($text, $quote);
+        $eq_pos = strrpos($text, $quote);
+
+        $position = $this->lexer->getBracketEndingPos($text, $text_length, $obrk_pos, $cbrk_pos);
+
+        $this->assertTrue(is_array($position));
+        $this->assertEquals(2, count($position));
+        $this->assertEquals($cbrk_pos, $position[0]);
+        $this->assertEquals(array(array($sq_pos, $eq_pos)), $position[1]);
+    }
 }
  

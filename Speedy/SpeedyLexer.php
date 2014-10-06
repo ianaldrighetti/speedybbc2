@@ -113,13 +113,13 @@ class SpeedyLexer
      *               being an array of starting and ending positions of quotes (each entry is an array with two points,
      *               the starting position of the quote and the ending).
      */
-    private function getBracketEndingPos($text, $text_length, $obrk_pos, $cbrk_pos)
+    public function getBracketEndingPos($text, $text_length, $obrk_pos, $cbrk_pos)
     {
         // The goal of this method is pretty simple and straightforward: to find the closing bracket of the tag. However
         // the simplicity of this can become more complicated if there are any quotes between the opening and closing
         // bracket which will then require a character by character verification to ensure that bracket isn't within a
         // quote.
-        if (strpos($text, self::DOUBLE_QUOTE, $obrk_pos) === false || strpos($text, self::SINGLE_QUOTE, $obrk_pos) === false)
+        if (strpos($text, self::DOUBLE_QUOTE, $obrk_pos) === false && strpos($text, self::SINGLE_QUOTE, $obrk_pos) === false)
         {
             return array($cbrk_pos, array());
         }
